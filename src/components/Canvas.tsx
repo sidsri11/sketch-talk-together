@@ -179,7 +179,10 @@ const Canvas: React.FC = () => {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
-      style={{ cursor: currentTool === "select" ? "default" : "crosshair" }}
+      style={{ 
+        cursor: currentTool === "select" ? "default" : "crosshair",
+        color: "black" // This ensures the cursor color is black
+      }}
     />
   );
 };
