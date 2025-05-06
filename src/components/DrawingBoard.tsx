@@ -78,9 +78,9 @@ const DrawingBoard: React.FC = () => {
           <Toolbar />
         </ResizablePanel>
         
-        <ResizablePanel defaultSize={layout.canvasSize} minSize={30} className="flex">
+        <ResizablePanel defaultSize={layout.canvasSize} minSize={30} className="flex h-full overflow-hidden">
           {currentUser ? (
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full overflow-hidden">
               <div className="absolute top-4 left-4 z-10 bg-background bg-opacity-50 backdrop-blur-sm p-2 rounded-lg">
                 <div className="flex items-center gap-2">
                   <Users className="h-4 w-4 text-muted-foreground" />
@@ -89,7 +89,7 @@ const DrawingBoard: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="canvas-container w-full h-full">
+              <div className="canvas-container w-full h-full overflow-hidden">
                 <Canvas />
               </div>
             </div>

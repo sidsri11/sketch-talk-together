@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { useDrawing } from "@/context/DrawingContext";
 import { DrawingElement, Point } from "@/types/drawing";
@@ -123,11 +122,12 @@ const Canvas: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Set canvas dimensions to match its container
+    // Set canvas dimensions to match its container and make it full screen
     const resizeCanvas = () => {
       const container = canvas.parentElement;
       if (!container) return;
       
+      // Set to full container size
       canvas.width = container.clientWidth;
       canvas.height = container.clientHeight;
       redrawCanvas();
@@ -180,8 +180,14 @@ const Canvas: React.FC = () => {
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
       style={{ 
-        cursor: currentTool === "select" ? "default" : "crosshair",
-        color: "black" // This ensures the cursor color is black
+        cursor: currentTool === "select" ? "default" : "crosshair", 
+        // Use !important to ensure cursor color overrides any browser/system settings
+        color: "black !important",
+        // Apply additional CSS custom properties for cursor color
+        "--cursor-color": "black",
+        // Add this to ensure the canvas takes the full available space
+        width: "100%",
+        height: "100%",
       }}
     />
   );
