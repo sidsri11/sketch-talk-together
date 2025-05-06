@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { useDrawing } from "@/context/DrawingContext";
 import { DrawingElement, Point } from "@/types/drawing";
@@ -175,14 +174,12 @@ const Canvas: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full"
+      className="w-full h-full cursor-none"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
       style={{ 
-        cursor: currentTool === "select" ? "default" : "crosshair", 
-        color: "black",
         width: "100%",
         height: "100%"
       }}
