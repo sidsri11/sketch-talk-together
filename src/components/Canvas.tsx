@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from "react";
 import { useDrawing } from "@/context/DrawingContext";
 import { DrawingElement, Point } from "@/types/drawing";
@@ -181,13 +182,9 @@ const Canvas: React.FC = () => {
       onMouseLeave={handleMouseLeave}
       style={{ 
         cursor: currentTool === "select" ? "default" : "crosshair", 
-        // Use !important to ensure cursor color overrides any browser/system settings
-        color: "black !important",
-        // Apply additional CSS custom properties for cursor color
-        "--cursor-color": "black",
-        // Add this to ensure the canvas takes the full available space
+        color: "black",
         width: "100%",
-        height: "100%",
+        height: "100%"
       }}
     />
   );

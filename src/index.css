@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -153,4 +154,10 @@ canvas {
 canvas:hover {
   cursor: crosshair !important;
   caret-color: black !important;
+}
+
+/* Force black cursor on all drawing operations */
+.canvas-container *::selection {
+  background-color: black;
+  color: white;
 }
