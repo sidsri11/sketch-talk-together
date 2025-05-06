@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from "react";
 import { useDrawing } from "@/context/DrawingContext";
 import { DrawingElement, Point } from "@/types/drawing";
@@ -174,7 +175,7 @@ const Canvas: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full cursor-none"
+      className="w-full h-full"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
