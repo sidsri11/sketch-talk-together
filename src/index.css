@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -110,7 +109,6 @@
   background-size: 40px 40px;
   width: 100%;
   height: 100%;
-  cursor: crosshair 
 }
 
 .tool-button {
@@ -138,11 +136,11 @@
   @apply bg-muted-foreground/50;
 }
 
-/* Set crosshair cursor for all canvas operations */
+/* Set black crosshair cursor for all canvas operations */
 canvas, 
 .canvas-container, 
 .canvas-container * {
-  cursor: crosshair 
+  cursor: crosshair !important;
 }
 
 /* Ensure canvas takes full space */

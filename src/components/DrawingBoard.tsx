@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDrawing } from "@/context/DrawingContext";
 import Canvas from "./Canvas";
 import Toolbar from "./Toolbar";
@@ -10,7 +10,7 @@ import { Users } from "lucide-react";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 
 const DrawingBoard: React.FC = () => {
-  const { currentUser } = useDrawing();
+  const { currentUser, setCurrentTool, clearCanvas } = useDrawing();
   const [showJoinModal, setShowJoinModal] = useState(true);
   const [layout, setLayout] = useState({
     toolbarSize: 60,  // Width in pixels
@@ -18,53 +18,43 @@ const DrawingBoard: React.FC = () => {
     chatSize: 30,     // Percentage
   });
 
-  useEffect(() => {
-    // Set up keyboard shortcuts
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Only process shortcuts if we're not in an input
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
-        return;
-      }
-
-      const { setCurrentTool, clearCanvas } = useDrawing();
-      
-      switch (e.key.toLowerCase()) {
-        case "s":
-          setCurrentTool("select");
-          break;
-        case "d":
-          setCurrentTool("pen");
-          break;
-        case "r":
-          setCurrentTool("rectangle");
-          break;
-        case "c":
-          setCurrentTool("circle");
-          break;
-        case "a":
-          setCurrentTool("arrow");
-          break;
-        case "t":
-          setCurrentTool("text");
-          break;
-        case "escape":
-          // Clear selection or cancel operation
-          break;
-        case "delete":
-        case "backspace":
-          // Delete selected element
-          break;
-        default:
-          break;
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
+  // Fixed keyboard shortcuts implementation
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    // Only process shortcuts if we're not in an input
+    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      return;
+    }
     
+    switch (e.key.toLowerCase()) {
+      case "s":
+        setCurrentTool("select");
+        break;
+      case "d":
+        setCurrentTool("pen");
+        break;
+      case "r":
+        setCurrentTool("rectangle");
+        break;
+      case "c":
+        setCurrentTool("circle");
+        break;
+      case "a":
+        setCurrentTool("arrow");
+        break;
+      case "t":
+        setCurrentTool("text");
+        break;
+      default:
+        break;
+    }
+  }, [setCurrentTool]);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [handleKeyDown]);
 
   return (
     <>
