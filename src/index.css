@@ -107,10 +107,10 @@
   background-color: theme('colors.canvas.light');
   background-image: linear-gradient(to right, theme('colors.canvas.grid') 1px, transparent 1px),
     linear-gradient(to bottom, theme('colors.canvas.grid') 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-size: 40px 40px;
   width: 100%;
   height: 100%;
-  cursor: crosshair !important;
+  cursor: crosshair 
 }
 
 .tool-button {
@@ -142,7 +142,7 @@
 canvas, 
 .canvas-container, 
 .canvas-container * {
-  cursor: crosshair !important;
+  cursor: crosshair 
 }
 
 /* Ensure canvas takes full space */

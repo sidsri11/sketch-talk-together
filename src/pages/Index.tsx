@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <div className="h-screen flex flex-col">
       <header className="border-b p-3">
-        <h1 className="text-xl font-bold text-primary">Sketch Talk</h1>
+        <h1 className="text-xl font-bold text-primary">excalidraw</h1>
       </header>
       <main className="flex-1 overflow-hidden">
         <DrawingProvider>

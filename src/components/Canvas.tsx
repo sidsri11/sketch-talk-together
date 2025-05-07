@@ -8,7 +8,6 @@ const Canvas: React.FC = () => {
   const {
     elements,
     currentElement,
-    currentTool,
     startDrawing,
     draw,
     stopDrawing,
